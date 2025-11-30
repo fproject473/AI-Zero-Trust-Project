@@ -47,3 +47,33 @@ ________________________________________
 •	VirtualBox/VMware Windows VM
 •	Google Drive for dataset storage
 
+ Architecture / Workflow Diagram
+
+         | Windows VM (Sysmon) |
+         +----------+----------+
+                    |
+                    | Sysmon Logs (XML/EVTX)
+                    v
+        +---------------------------+
+        | Export as CSV (Event Log) |
+        +-------------+-------------+
+                      |
+                      v
+        +---------------------------+
+        |   Data Cleaning Script    |
+        |  (parse + feature build)  |
+        +-------------+-------------+
+                      |
+                      v
+        +---------------------------+
+        | Isolation Forest ML Model |
+        | -> Normal / High Risk     |
+        +-------------+-------------+
+                      |
+                      v
+        +---------------------------+
+        |   Zero Trust Risk Score   |
+        |  + Visualization/Reports  |
+        +---------------------------+
+
+
